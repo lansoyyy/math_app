@@ -43,6 +43,7 @@ dependencies:
   get_storage:
   path_provider:
   video_player:
+  easy_quiz_game:
 dev_dependencies:
   flutter_test:
     sdk: flutter

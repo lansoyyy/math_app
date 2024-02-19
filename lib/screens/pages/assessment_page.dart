@@ -2,6 +2,7 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:mathalino/screens/pages/quiz_time_page.dart';
 import 'package:mathalino/screens/pages/video_page.dart';
 import 'package:mathalino/widgets/toast_widget.dart';
 import 'package:path_provider/path_provider.dart';
@@ -61,9 +62,7 @@ class _AssessmentpageState extends State<Assessmentpage> {
                 label: 'Quiz Time',
                 onPressed: () {
                   Navigator.of(context).push(MaterialPageRoute(
-                      builder: (context) => VideoPage(
-                            video: 'assets/images/2.mp4',
-                          )));
+                      builder: (context) => const QuizPage()));
                 },
               ),
             ],

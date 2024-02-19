@@ -205,7 +205,7 @@ box?
           actions: <Widget>[
             TextButton(
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
                     builder: (context) => const Assessmentpage()));
                 // Reset quiz
                 setState(() {

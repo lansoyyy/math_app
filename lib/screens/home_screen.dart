@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mathalino/screens/pages/book_page.dart';
+import 'package:mathalino/screens/pages/drills_page.dart';
 import 'package:mathalino/widgets/button_widget.dart';
 import 'package:mathalino/widgets/text_widget.dart';
 
@@ -49,7 +50,10 @@ class HomeScreen extends StatelessWidget {
               fontSize: 24,
               color: Colors.blue,
               label: 'DRILLS AND PRACTICES',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const DrillsPage()));
+              },
             ),
             const SizedBox(
               height: 20,

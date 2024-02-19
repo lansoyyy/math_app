@@ -42,6 +42,7 @@ dependencies:
   fluttertoast:
   get_storage:
   path_provider:
+  video_player:
 dev_dependencies:
   flutter_test:
     sdk: flutter

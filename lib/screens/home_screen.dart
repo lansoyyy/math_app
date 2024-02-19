@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mathalino/screens/pages/assessment_page.dart';
 import 'package:mathalino/screens/pages/book_page.dart';
 import 'package:mathalino/screens/pages/drills_page.dart';
 import 'package:mathalino/widgets/button_widget.dart';
@@ -62,7 +63,10 @@ class HomeScreen extends StatelessWidget {
               fontSize: 24,
               color: Colors.blue,
               label: 'ASSESSMENT',
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).push(MaterialPageRoute(
+                    builder: (context) => const Assessmentpage()));
+              },
             ),
           ],
         ),

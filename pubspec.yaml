@@ -46,6 +46,7 @@ dependencies:
   easy_quiz_game:
   confetti:
   get:
+  awesome_dialog:
 dev_dependencies:
   flutter_test:
     sdk: flutter

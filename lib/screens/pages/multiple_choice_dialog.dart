@@ -3,15 +3,16 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:mathalino/screens/home_screen.dart';
 import 'package:mathalino/screens/pages/assessment_page.dart';
+import 'package:mathalino/widgets/toast_widget.dart';
 
-class QuizPage extends StatefulWidget {
-  const QuizPage({super.key});
+class MultipleChoicePage extends StatefulWidget {
+  const MultipleChoicePage({super.key});
 
   @override
-  _QuizPageState createState() => _QuizPageState();
+  _MultipleChoicePageState createState() => _MultipleChoicePageState();
 }
 
-class _QuizPageState extends State<QuizPage> {
+class _MultipleChoicePageState extends State<MultipleChoicePage> {
   int _currentQuestionIndex = 0;
   final List<String> _questions = [
     'Which of the following are factors of 15?',
@@ -104,60 +105,13 @@ box?
   ]; // Index of the correct answer for each question
 
   @override
-  void initState() {
-    super.initState();
-    _startTimer();
-  }
-
-  @override
-  void dispose() {
-    _timer.cancel();
-    super.dispose();
-  }
-
-  void _startTimer() {
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      setState(() {
-        if (_secondsRemaining > 0) {
-          _secondsRemaining--;
-        } else {
-          showtimesupDialog();
-
-          _timer.cancel();
-        }
-      });
-    });
-  }
-
-  void _resetTimer() {
-    _timer.cancel();
-    setState(() {
-      _secondsRemaining = 5;
-    });
-    _startTimer();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: const Text('Quiz Time'),
-      ),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            'Your Time: $_secondsRemaining',
-            style: const TextStyle(fontSize: 28, fontFamily: 'Bold'),
-          ),
-          const SizedBox(
-            height: 50,
-          ),
-          _buildQuizBody(),
-        ],
-      ),
-    );
+        appBar: AppBar(
+          centerTitle: true,
+          title: const Text('Multiple Choice'),
+        ),
+        body: _buildQuizBody());
   }
 
   int score = 0;
@@ -165,7 +119,6 @@ box?
   List<String?> _selectedOptions = List.filled(20, null);
 
   late Timer _timer;
-  int _secondsRemaining = 5;
 
   Widget _buildQuizBody() {
     return Column(
@@ -200,7 +153,6 @@ box?
           child: ElevatedButton(
             onPressed: () {
               _checkAnswer(option);
-              _resetTimer();
             },
             child: Text(option),
           ),
@@ -219,13 +171,15 @@ box?
       });
       // Answer is correct
       // You can add your logic here, e.g., increase score, show correct answer
+      _nextQuestion();
     } else {
       // Answer is incorrect
       // You can add your logic here, e.g., show correct answer
+
+      showToast('Wrong answer!');
     }
 
     // Move to the next question
-    _nextQuestion();
   }
 
   void _nextQuestion() {

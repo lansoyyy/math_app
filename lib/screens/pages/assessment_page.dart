@@ -1,11 +1,6 @@
-import 'dart:io';
-
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
+import 'package:mathalino/screens/pages/multiple_choice_dialog.dart';
 import 'package:mathalino/screens/pages/quiz_time_page.dart';
-import 'package:mathalino/screens/pages/video_page.dart';
-import 'package:mathalino/widgets/toast_widget.dart';
-import 'package:path_provider/path_provider.dart';
 
 import '../../widgets/button_widget.dart';
 import '../../widgets/text_widget.dart';
@@ -51,7 +46,10 @@ class _AssessmentpageState extends State<Assessmentpage> {
                 fontSize: 24,
                 color: Colors.blue,
                 label: 'Multiple Choice',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => const MultipleChoicePage()));
+                },
               ),
               const SizedBox(
                 height: 20,

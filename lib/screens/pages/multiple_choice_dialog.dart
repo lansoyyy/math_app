@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:mathalino/screens/home_screen.dart';
 import 'package:mathalino/screens/pages/assessment_page.dart';
@@ -13,6 +14,20 @@ class MultipleChoicePage extends StatefulWidget {
 }
 
 class _MultipleChoicePageState extends State<MultipleChoicePage> {
+  bool playing = false;
+  final cont = ConfettiController();
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    cont.addListener(() {
+      setState(() {
+        playing = cont.state == ConfettiControllerState.playing;
+      });
+    });
+  }
+
   int _currentQuestionIndex = 0;
   final List<String> _questions = [
     '''
@@ -191,15 +206,24 @@ Which number correctly completes the questions?
   late Timer _timer;
 
   Widget _buildQuizBody() {
-    return Column(
-      mainAxisAlignment: MainAxisAlignment.center,
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        _buildQuestion(),
-        const SizedBox(height: 20),
-        _buildOptions(),
-        const SizedBox(height: 20),
-        // _buildNextButton(),
+    return Stack(
+      children: [
+        Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: <Widget>[
+            _buildQuestion(),
+            const SizedBox(height: 20),
+            _buildOptions(),
+            const SizedBox(height: 20),
+            // _buildNextButton(),
+          ],
+        ),
+        ConfettiWidget(
+          blastDirectionality: BlastDirectionality.explosive,
+          shouldLoop: true,
+          confettiController: cont,
+        ),
       ],
     );
   }
@@ -231,7 +255,7 @@ Which number correctly completes the questions?
     );
   }
 
-  void _checkAnswer(String selectedOption) {
+  Future<void> _checkAnswer(String selectedOption) async {
     int correctAnswerIndex = _answers[_currentQuestionIndex];
     String correctAnswer = _options[_currentQuestionIndex][correctAnswerIndex];
 
@@ -239,6 +263,10 @@ Which number correctly completes the questions?
       setState(() {
         score++;
       });
+      showToast('Correct answer!');
+      cont.play();
+      await Future.delayed(const Duration(seconds: 3));
+      cont.stop();
       // Answer is correct
       // You can add your logic here, e.g., increase score, show correct answer
       _nextQuestion();

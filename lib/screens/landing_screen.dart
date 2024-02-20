@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mathalino/screens/home_screen.dart';
 import 'package:mathalino/widgets/button_widget.dart';
 import 'package:mathalino/widgets/text_widget.dart';
@@ -39,8 +40,9 @@ class LandingScreen extends StatelessWidget {
               color: Colors.blue,
               label: 'START',
               onPressed: () {
-                Navigator.of(context).pushReplacement(MaterialPageRoute(
-                    builder: (context) => const HomeScreen()));
+                Get.off(() => const HomeScreen(),
+                    transition: Transition.circularReveal,
+                    duration: const Duration(seconds: 5));
               },
             ),
           ],

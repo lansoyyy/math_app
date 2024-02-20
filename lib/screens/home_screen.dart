@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mathalino/screens/pages/assessment_page.dart';
 import 'package:mathalino/screens/pages/book_page.dart';
 import 'package:mathalino/screens/pages/drills_page.dart';
@@ -40,8 +41,9 @@ class HomeScreen extends StatelessWidget {
               color: Colors.blue,
               label: 'BOOKS',
               onPressed: () {
-                Navigator.of(context).push(
-                    MaterialPageRoute(builder: (context) => const BookPage()));
+                Get.to(() => const BookPage(),
+                    transition: Transition.circularReveal,
+                    duration: const Duration(seconds: 3));
               },
             ),
             const SizedBox(
@@ -52,8 +54,9 @@ class HomeScreen extends StatelessWidget {
               color: Colors.blue,
               label: 'DRILLS AND PRACTICES',
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const DrillsPage()));
+                Get.to(() => const DrillsPage(),
+                    transition: Transition.circularReveal,
+                    duration: const Duration(seconds: 3));
               },
             ),
             const SizedBox(
@@ -64,8 +67,9 @@ class HomeScreen extends StatelessWidget {
               color: Colors.blue,
               label: 'ASSESSMENT',
               onPressed: () {
-                Navigator.of(context).push(MaterialPageRoute(
-                    builder: (context) => const Assessmentpage()));
+                Get.to(() => const Assessmentpage(),
+                    transition: Transition.circularReveal,
+                    duration: const Duration(seconds: 3));
               },
             ),
           ],

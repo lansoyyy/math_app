@@ -34,10 +34,26 @@ class _AssessmentpageState extends State<Assessmentpage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              TextWidget(
-                text: 'Assessments',
-                fontSize: 48,
-                fontFamily: 'Bold',
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back,
+                    ),
+                  ),
+                  TextWidget(
+                    text: 'Assessments',
+                    fontSize: 42,
+                    fontFamily: 'Bold',
+                  ),
+                  const SizedBox(
+                    width: 50,
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 20,

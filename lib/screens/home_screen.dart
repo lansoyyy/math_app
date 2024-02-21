@@ -62,13 +62,19 @@ class _HomeScreenState extends State<HomeScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
+              Image.asset(
+                'assets/images/ani.gif',
+              ),
+              const SizedBox(
+                height: 25,
+              ),
               TextWidget(
                 text: 'HOME',
                 fontSize: 48,
                 fontFamily: 'Bold',
               ),
               const SizedBox(
-                height: 50,
+                height: 25,
               ),
               ButtonWidget(
                 fontSize: 24,

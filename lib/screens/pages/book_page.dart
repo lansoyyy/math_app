@@ -46,10 +46,26 @@ class _BookPageState extends State<BookPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              TextWidget(
-                text: 'Book',
-                fontSize: 48,
-                fontFamily: 'Bold',
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back,
+                    ),
+                  ),
+                  TextWidget(
+                    text: 'Book',
+                    fontSize: 48,
+                    fontFamily: 'Bold',
+                  ),
+                  const SizedBox(
+                    width: 50,
+                  ),
+                ],
               ),
               GestureDetector(
                 onTap: () async {

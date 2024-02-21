@@ -3,7 +3,6 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:mathalino/screens/pages/video_page.dart';
-import 'package:mathalino/widgets/toast_widget.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../widgets/button_widget.dart';
@@ -48,10 +47,26 @@ class _DrillsPageState extends State<DrillsPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              TextWidget(
-                text: 'Drills and Practices',
-                fontSize: 48,
-                fontFamily: 'Bold',
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  IconButton(
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                    icon: const Icon(
+                      Icons.arrow_back,
+                    ),
+                  ),
+                  TextWidget(
+                    text: 'Drills and\nPractices',
+                    fontSize: 48,
+                    fontFamily: 'Bold',
+                  ),
+                  const SizedBox(
+                    width: 50,
+                  ),
+                ],
               ),
               const SizedBox(
                 height: 20,

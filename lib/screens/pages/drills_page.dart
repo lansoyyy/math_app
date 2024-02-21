@@ -2,11 +2,14 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:mathalino/screens/pages/video_page.dart';
 import 'package:path_provider/path_provider.dart';
 
 import '../../widgets/button_widget.dart';
 import '../../widgets/text_widget.dart';
+import '../home_screen.dart';
 
 class DrillsPage extends StatefulWidget {
   const DrillsPage({super.key});
@@ -24,6 +27,32 @@ class _DrillsPageState extends State<DrillsPage> {
     List<int> bytes = data.buffer.asUint8List();
 
     await File(savePath).writeAsBytes(bytes);
+  }
+
+  final player = AudioPlayer();
+  @override
+  initState() {
+    playAudio();
+    super.initState();
+  }
+
+  playAudio() async {
+    await player.setAsset('assets/images/happy.mp3');
+
+    await player.play();
+    await player.setVolume(1);
+  }
+
+  stopAudio() async {
+    await player.stop();
+  }
+
+  @override
+  void dispose() {
+    stopAudio();
+
+    player.dispose();
+    super.dispose();
   }
 
   @override
@@ -51,8 +80,11 @@ class _DrillsPageState extends State<DrillsPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
+                    onPressed: () async {
+                      await player.stop();
+                      Get.to(() => const HomeScreen(),
+                          transition: Transition.circularReveal,
+                          duration: const Duration(seconds: 3));
                     },
                     icon: const Icon(
                       Icons.arrow_back,

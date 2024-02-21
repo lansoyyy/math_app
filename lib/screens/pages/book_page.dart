@@ -2,6 +2,9 @@ import 'dart:io';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:get/get.dart';
+import 'package:just_audio/just_audio.dart';
+import 'package:mathalino/screens/home_screen.dart';
 import 'package:mathalino/widgets/toast_widget.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -23,6 +26,32 @@ class _BookPageState extends State<BookPage> {
     List<int> bytes = data.buffer.asUint8List();
 
     await File(savePath).writeAsBytes(bytes);
+  }
+
+  final player = AudioPlayer();
+  @override
+  initState() {
+    playAudio();
+    super.initState();
+  }
+
+  playAudio() async {
+    await player.setAsset('assets/images/happy.mp3');
+
+    await player.play();
+    await player.setVolume(1);
+  }
+
+  stopAudio() async {
+    await player.stop();
+  }
+
+  @override
+  void dispose() {
+    stopAudio();
+
+    player.dispose();
+    super.dispose();
   }
 
   @override
@@ -50,8 +79,11 @@ class _BookPageState extends State<BookPage> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   IconButton(
-                    onPressed: () {
-                      Navigator.pop(context);
+                    onPressed: () async {
+                      await player.stop();
+                      Get.to(() => const HomeScreen(),
+                          transition: Transition.circularReveal,
+                          duration: const Duration(seconds: 3));
                     },
                     icon: const Icon(
                       Icons.arrow_back,

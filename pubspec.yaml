@@ -48,6 +48,7 @@ dependencies:
   get:
   awesome_dialog:
   just_audio:
+  easy_pdf_viewer:
 dev_dependencies:
   flutter_test:
     sdk: flutter

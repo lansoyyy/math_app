@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:easy_pdf_viewer/easy_pdf_viewer.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:get/get.dart';
@@ -32,6 +33,7 @@ class _BookPageState extends State<BookPage> {
   @override
   initState() {
     playAudio();
+    showToast('Click the book to start reading!');
     super.initState();
   }
 
@@ -54,6 +56,10 @@ class _BookPageState extends State<BookPage> {
     super.dispose();
   }
 
+  bool hasLoaded = false;
+
+  var pdfdoc = PDFDocument();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,51 +77,57 @@ class _BookPageState extends State<BookPage> {
         ),
         child: Padding(
           padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  IconButton(
-                    onPressed: () async {
-                      await player.stop();
-                      Get.to(() => const HomeScreen(),
-                          transition: Transition.circularReveal,
-                          duration: const Duration(seconds: 3));
-                    },
-                    icon: const Icon(
-                      Icons.arrow_back,
+          child: SafeArea(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(
+                      onPressed: () async {
+                        await player.stop();
+                        Get.to(() => const HomeScreen(),
+                            transition: Transition.circularReveal,
+                            duration: const Duration(seconds: 3));
+                      },
+                      icon: const Icon(
+                        Icons.arrow_back,
+                      ),
                     ),
-                  ),
-                  TextWidget(
-                    text: 'Book',
-                    fontSize: 48,
-                    fontFamily: 'Bold',
-                  ),
-                  const SizedBox(
-                    width: 50,
-                  ),
-                ],
-              ),
-              GestureDetector(
-                onTap: () async {
-                  try {
-                    String assetName = 'assets/images/bookfile.pdf';
-                    String fileName = 'bookfile.pdf';
-                    await downloadAsset(assetName, fileName);
-
-                    showToast('Book downloaded!');
-                  } catch (e) {
-                    showToast(e);
-                  }
-                },
-                child: Image.asset(
-                  'assets/images/book.png',
+                    TextWidget(
+                      text: 'Book',
+                      fontSize: 48,
+                      fontFamily: 'Bold',
+                    ),
+                    const SizedBox(
+                      width: 50,
+                    ),
+                  ],
                 ),
-              ),
-            ],
+                hasLoaded
+                    ? Expanded(
+                        child: SizedBox(
+                            height: 300,
+                            width: 300,
+                            child: PDFViewer(document: pdfdoc)),
+                      )
+                    : GestureDetector(
+                        onTap: () async {
+                          pdfdoc = await PDFDocument.fromAsset(
+                              'assets/images/bookfile.pdf');
+
+                          setState(() {
+                            hasLoaded = true;
+                          });
+                        },
+                        child: Image.asset(
+                          'assets/images/book.png',
+                        ),
+                      ),
+              ],
+            ),
           ),
         ),
       ),

@@ -4,6 +4,7 @@ import 'package:just_audio/just_audio.dart';
 import 'package:mathalino/screens/pages/assessment_page.dart';
 import 'package:mathalino/screens/pages/book_page.dart';
 import 'package:mathalino/screens/pages/drills_page.dart';
+import 'package:mathalino/screens/pages/settings_page.dart';
 import 'package:mathalino/widgets/button_widget.dart';
 import 'package:mathalino/widgets/text_widget.dart';
 
@@ -111,6 +112,20 @@ class _HomeScreenState extends State<HomeScreen> {
               onPressed: () async {
                 await player.stop();
                 Get.to(() => const Assessmentpage(),
+                    transition: Transition.circularReveal,
+                    duration: const Duration(seconds: 3));
+              },
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            ButtonWidget(
+              fontSize: 24,
+              color: Colors.blue,
+              label: 'SETTINGS',
+              onPressed: () async {
+                await player.stop();
+                Get.to(() => const SettingsPage(),
                     transition: Transition.circularReveal,
                     duration: const Duration(seconds: 3));
               },

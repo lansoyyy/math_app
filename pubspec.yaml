@@ -49,6 +49,9 @@ dependencies:
   awesome_dialog:
   just_audio:
   easy_pdf_viewer:
+  flutter_volume_controller:
+  screen_brightness:
+  flutter_screen_wake:
 dev_dependencies:
   flutter_test:
     sdk: flutter

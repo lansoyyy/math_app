@@ -9,6 +9,7 @@ import 'package:mathalino/screens/pages/video_page.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:screen_brightness/screen_brightness.dart';
 
+import 'package:flutter_screen_wake/flutter_screen_wake.dart';
 import '../../widgets/button_widget.dart';
 import '../../widgets/text_widget.dart';
 import '../home_screen.dart';
@@ -149,7 +150,7 @@ class _DrillsPageState extends State<SettingsPage> {
 
   Future<void> setBrightness(double brightness) async {
     try {
-      await ScreenBrightness().setScreenBrightness(brightness);
+      await FlutterScreenWake.setBrightness(0.5);
     } catch (e) {
       print(e);
       throw 'Failed to set brightness';

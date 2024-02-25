@@ -36,6 +36,7 @@ dependencies:
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2
   firebase_core:
+  flutter_screen_wake:
   cloud_firestore:
   firebase_storage:
   firebase_auth:
@@ -51,7 +52,6 @@ dependencies:
   easy_pdf_viewer:
   flutter_volume_controller:
   screen_brightness:
-  flutter_screen_wake:
 dev_dependencies:
   flutter_test:
     sdk: flutter

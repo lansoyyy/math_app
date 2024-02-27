@@ -27,6 +27,8 @@ class _VideoPageState extends State<VideoPage> {
     controller.initialize().then((value) {
       setState(() {});
     });
+
+    controller.play();
   }
 
   @override

@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:mathalino/screens/home_screen.dart';
 import 'package:mathalino/screens/pages/assessment_page.dart';
@@ -147,6 +148,12 @@ box?
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
+          Image.asset(
+            'assets/images/ani1.gif',
+          ),
+          const SizedBox(
+            height: 10,
+          ),
           Text(
             'Your Time: $_secondsRemaining',
             style: const TextStyle(fontSize: 28, fontFamily: 'Bold'),
@@ -202,7 +209,16 @@ box?
               _checkAnswer(option);
               _resetTimer();
             },
-            child: Text(option),
+            child: AnimatedTextKit(
+              repeatForever: true,
+              animatedTexts: [
+                WavyAnimatedText(option),
+              ],
+              isRepeatingAnimation: true,
+              onTap: () {
+                print("Tap Event");
+              },
+            ),
           ),
         );
       }).toList(),

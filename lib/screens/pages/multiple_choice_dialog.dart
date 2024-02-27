@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:mathalino/screens/home_screen.dart';
@@ -212,6 +213,13 @@ Which number correctly completes the questions?
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: <Widget>[
+            Image.asset(
+              'assets/images/ani1.gif',
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+
             _buildQuestion(),
             const SizedBox(height: 20),
             _buildOptions(),
@@ -239,19 +247,44 @@ Which number correctly completes the questions?
   }
 
   Widget _buildOptions() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: _options[_currentQuestionIndex].map((option) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: ElevatedButton(
-            onPressed: () {
-              _checkAnswer(option);
-            },
-            child: Text(option),
-          ),
-        );
-      }).toList(),
+    return SizedBox(
+      height: 200,
+      child: GridView.builder(
+        itemCount: 4,
+        gridDelegate:
+            const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 4),
+        itemBuilder: (context, index) {
+          return Padding(
+            padding: const EdgeInsets.all(10),
+            child: ElevatedButton(
+              onPressed: () {
+                _checkAnswer(_options[_currentQuestionIndex][index]);
+              },
+              style: ElevatedButton.styleFrom(
+                shape: RoundedRectangleBorder(
+                  borderRadius:
+                      BorderRadius.circular(20.0), // Customize the shape
+                ),
+                backgroundColor: Colors.blue, // Customize the button color
+              ),
+              child: AnimatedTextKit(
+                repeatForever: true,
+                animatedTexts: [
+                  WavyAnimatedText(_options[_currentQuestionIndex][index],
+                      textStyle: const TextStyle(
+                        fontFamily: 'Bold',
+                        fontSize: 18,
+                      )),
+                ],
+                isRepeatingAnimation: true,
+                onTap: () {
+                  _checkAnswer(_options[_currentQuestionIndex][index]);
+                },
+              ),
+            ),
+          );
+        },
+      ),
     );
   }
 

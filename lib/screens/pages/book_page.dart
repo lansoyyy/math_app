@@ -76,7 +76,7 @@ class _BookPageState extends State<BookPage> {
               fit: BoxFit.cover),
         ),
         child: Padding(
-          padding: const EdgeInsets.only(left: 10, right: 10, top: 10),
+          padding: const EdgeInsets.only(top: 5),
           child: SafeArea(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -109,8 +109,8 @@ class _BookPageState extends State<BookPage> {
                 hasLoaded
                     ? Expanded(
                         child: SizedBox(
-                            height: 300,
-                            width: 300,
+                            height: 400,
+                            width: double.infinity,
                             child: PDFViewer(document: pdfdoc)),
                       )
                     : GestureDetector(

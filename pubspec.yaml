@@ -53,6 +53,7 @@ dependencies:
   animated_text_kit:
   flutter_volume_controller:
   screen_brightness:
+  easy_stepper:
 dev_dependencies:
   flutter_test:
     sdk: flutter

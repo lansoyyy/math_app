@@ -5,12 +5,9 @@ import 'package:flutter/services.dart';
 import 'package:flutter_volume_controller/flutter_volume_controller.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
-import 'package:mathalino/screens/pages/video_page.dart';
 import 'package:path_provider/path_provider.dart';
-import 'package:screen_brightness/screen_brightness.dart';
 
 import 'package:flutter_screen_wake/flutter_screen_wake.dart';
-import '../../widgets/button_widget.dart';
 import '../../widgets/text_widget.dart';
 import '../home_screen.dart';
 
@@ -74,7 +71,7 @@ class _DrillsPageState extends State<SettingsPage> {
                 'assets/images/back.png',
               ),
               opacity: 125,
-              fit: BoxFit.cover),
+              fit: BoxFit.fill),
         ),
         child: Padding(
           padding: const EdgeInsets.only(left: 10, right: 10, top: 10),

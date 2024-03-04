@@ -73,7 +73,7 @@ class _BookPageState extends State<BookPage> {
                 'assets/images/back.png',
               ),
               opacity: 125,
-              fit: BoxFit.cover),
+              fit: BoxFit.fill),
         ),
         child: Padding(
           padding: const EdgeInsets.only(top: 5),

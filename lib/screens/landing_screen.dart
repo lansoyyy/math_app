@@ -11,7 +11,7 @@ class LandingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Container(
-        width: double.infinity,
+        width: 500,
         height: double.infinity,
         decoration: const BoxDecoration(
           color: Colors.white,
@@ -20,7 +20,7 @@ class LandingScreen extends StatelessWidget {
                 'assets/images/back.png',
               ),
               opacity: 125,
-              fit: BoxFit.cover),
+              fit: BoxFit.fill),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,

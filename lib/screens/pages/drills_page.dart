@@ -68,7 +68,7 @@ class _DrillsPageState extends State<DrillsPage> {
                 'assets/images/back.png',
               ),
               opacity: 125,
-              fit: BoxFit.cover),
+              fit: BoxFit.fill),
         ),
         child: Padding(
           padding: const EdgeInsets.only(left: 10, right: 10, top: 10),

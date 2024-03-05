@@ -86,7 +86,13 @@ class _VideoPageState extends State<VideoPage> {
                   icon: const Icon(Icons.stop))
             ],
           ),
-        )
+        ),
+        const SizedBox(
+          height: 20,
+        ),
+        Image.asset(
+          'assets/images/child.gif',
+        ),
       ])),
     );
   }

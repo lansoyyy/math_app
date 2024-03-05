@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:mathalino/screens/home_screen.dart';
 import 'package:mathalino/screens/pages/assessment_page.dart';
 import 'package:mathalino/widgets/toast_widget.dart';
@@ -190,6 +191,26 @@ Which number correctly completes the questions?
     2
   ]; // Index of the correct answer for each question
 
+  final player = AudioPlayer();
+
+  Future playTryagain() async {
+    await player.setAsset('assets/images/tryagain.mp3');
+
+    await player.play();
+    await player.setVolume(1);
+  }
+
+  Future playGoodjob() async {
+    await player.setAsset('assets/images/goodjob.mp3');
+
+    await player.play();
+    await player.setVolume(1);
+  }
+
+  stopAudio() async {
+    await player.stop();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -297,6 +318,9 @@ Which number correctly completes the questions?
         score++;
       });
       showToast('Correct answer!');
+      await playGoodjob().whenComplete(() async {
+        await player.stop();
+      });
       cont.play();
       await Future.delayed(const Duration(seconds: 3));
       cont.stop();
@@ -308,6 +332,9 @@ Which number correctly completes the questions?
       // You can add your logic here, e.g., show correct answer
 
       showToast('Wrong answer!');
+      await playTryagain().whenComplete(() async {
+        await player.stop();
+      });
     }
 
     // Move to the next question

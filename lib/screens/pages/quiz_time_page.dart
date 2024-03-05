@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
+import 'package:just_audio/just_audio.dart';
 import 'package:mathalino/screens/home_screen.dart';
 import 'package:mathalino/screens/pages/assessment_page.dart';
 
@@ -138,6 +139,26 @@ box?
     _startTimer();
   }
 
+  final player = AudioPlayer();
+
+  Future playTryagain() async {
+    await player.setAsset('assets/images/tryagain.mp3');
+
+    await player.play();
+    await player.setVolume(1);
+  }
+
+  Future playGoodjob() async {
+    await player.setAsset('assets/images/goodjob.mp3');
+
+    await player.play();
+    await player.setVolume(1);
+  }
+
+  stopAudio() async {
+    await player.stop();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -225,13 +246,17 @@ box?
     );
   }
 
-  void _checkAnswer(String selectedOption) {
+  Future<void> _checkAnswer(String selectedOption) async {
     int correctAnswerIndex = _answers[_currentQuestionIndex];
     String correctAnswer = _options[_currentQuestionIndex][correctAnswerIndex];
 
     if (selectedOption == correctAnswer) {
       setState(() {
         score++;
+      });
+
+      await playGoodjob().whenComplete(() async {
+        await player.stop();
       });
       // Answer is correct
       // You can add your logic here, e.g., increase score, show correct answer

@@ -108,10 +108,28 @@ class _BookPageState extends State<BookPage> {
                 ),
                 hasLoaded
                     ? Expanded(
-                        child: SizedBox(
-                            height: 400,
-                            width: double.infinity,
-                            child: PDFViewer(document: pdfdoc)),
+                        child: Stack(
+                          children: [
+                            SizedBox(
+                                height: double.infinity,
+                                width: double.infinity,
+                                child: PDFViewer(
+                                  document: pdfdoc,
+                                  showPicker: false,
+                                )),
+                            Padding(
+                              padding: const EdgeInsets.only(bottom: 50),
+                              child: Align(
+                                alignment: Alignment.bottomCenter,
+                                child: Container(
+                                  width: double.infinity,
+                                  height: 50,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       )
                     : GestureDetector(
                         onTap: () async {

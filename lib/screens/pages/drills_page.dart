@@ -163,7 +163,12 @@ class _DrillsPageState extends State<DrillsPage> {
                 fontSize: 14,
                 color: Colors.blue,
                 label: 'Adding and Subtracting\nDissimilar Fraction',
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context) => VideoPage(
+                            video: 'assets/images/Dissi.mp4',
+                          )));
+                },
               ),
             ],
           ),

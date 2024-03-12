@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:mathalino/screens/home_screen.dart';
 import 'package:mathalino/screens/pages/assessment_page.dart';
+import 'package:mathalino/widgets/toast_widget.dart';
 
 class QuizPage extends StatefulWidget {
   const QuizPage({super.key});
@@ -258,15 +259,20 @@ box?
       await playGoodjob().whenComplete(() async {
         await player.stop();
       });
+
+      _nextQuestion();
       // Answer is correct
       // You can add your logic here, e.g., increase score, show correct answer
     } else {
+      showToast('Wrong answer!');
+      await playTryagain().whenComplete(() async {
+        await player.stop();
+      });
       // Answer is incorrect
       // You can add your logic here, e.g., show correct answer
     }
 
     // Move to the next question
-    _nextQuestion();
   }
 
   void _nextQuestion() {

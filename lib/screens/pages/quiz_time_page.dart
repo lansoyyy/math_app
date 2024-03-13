@@ -260,7 +260,6 @@ box?
         await player.stop();
       });
 
-      _nextQuestion();
       // Answer is correct
       // You can add your logic here, e.g., increase score, show correct answer
     } else {
@@ -271,6 +270,7 @@ box?
       // Answer is incorrect
       // You can add your logic here, e.g., show correct answer
     }
+    _nextQuestion();
 
     // Move to the next question
   }

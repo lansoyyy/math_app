@@ -113,7 +113,7 @@ Which number correctly completes the questions?
     'Which sentence is true?',
     'choose the correct QUOTIENT of the given numbers. 25 divided by 5',
     ' choose the correct DIFFERENCE of the given numbers.',
-    'choose the correct DIFFERENCE of the given numbers.',
+    'What is the sum of the following numbers, 50+50?',
     'choose the correct QUOTIENT of the given numbers.',
     'choose the correct DIFFERENCE of the given numbers.',
     'Choose the correct name of the Polygon that has 3 equal sides and 3 angles.',
@@ -317,6 +317,7 @@ Which number correctly completes the questions?
       setState(() {
         score++;
       });
+      _nextQuestion();
       showToast('Correct answer!');
       await playGoodjob().whenComplete(() async {
         await player.stop();
@@ -326,7 +327,6 @@ Which number correctly completes the questions?
       cont.stop();
       // Answer is correct
       // You can add your logic here, e.g., increase score, show correct answer
-      _nextQuestion();
     } else {
       // Answer is incorrect
       // You can add your logic here, e.g., show correct answer

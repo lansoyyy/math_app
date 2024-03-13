@@ -87,11 +87,9 @@ class _VideoPageState extends State<VideoPage> {
             ],
           ),
         ),
-        const SizedBox(
-          height: 20,
-        ),
         Image.asset(
-          'assets/images/child.gif',
+          'assets/images/MathTALINO 1.jpg',
+          height: 250,
         ),
       ])),
     );

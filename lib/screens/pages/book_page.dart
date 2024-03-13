@@ -123,7 +123,7 @@ class _BookPageState extends State<BookPage> {
                                 alignment: Alignment.bottomCenter,
                                 child: Container(
                                   width: double.infinity,
-                                  height: 50,
+                                  height: 150,
                                   color: Colors.white,
                                 ),
                               ),

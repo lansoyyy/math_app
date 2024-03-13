@@ -87,9 +87,14 @@ class _VideoPageState extends State<VideoPage> {
             ],
           ),
         ),
-        Image.asset(
-          'assets/images/MathTALINO 1.jpg',
-          height: 250,
+        Expanded(
+          child: Container(
+            decoration: const BoxDecoration(
+                color: Colors.black,
+                image: DecorationImage(
+                    image: AssetImage('assets/images/MathTALINO 1.jpg'),
+                    fit: BoxFit.fitWidth)),
+          ),
         ),
       ])),
     );

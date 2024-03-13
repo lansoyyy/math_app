@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:mathalino/screens/home_screen.dart';
@@ -194,7 +193,7 @@ box?
   List<String?> _selectedOptions = List.filled(20, null);
 
   late Timer _timer;
-  int _secondsRemaining = 5;
+  int _secondsRemaining = 1000;
 
   Widget _buildQuizBody() {
     return Column(
@@ -202,9 +201,13 @@ box?
       crossAxisAlignment: CrossAxisAlignment.center,
       children: <Widget>[
         _buildQuestion(),
-        const SizedBox(height: 20),
+        const SizedBox(height: 10),
         _buildOptions(),
-        const SizedBox(height: 20),
+        const SizedBox(height: 10),
+        Image.asset(
+          'assets/images/Animation - 1710372996566.gif',
+          width: 175,
+        ),
         // _buildNextButton(),
       ],
     );
@@ -227,21 +230,11 @@ box?
         return Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: ElevatedButton(
-            onPressed: () {
-              _checkAnswer(option);
-              _resetTimer();
-            },
-            child: AnimatedTextKit(
-              repeatForever: true,
-              animatedTexts: [
-                WavyAnimatedText(option),
-              ],
-              isRepeatingAnimation: true,
-              onTap: () {
-                print("Tap Event");
+              onPressed: () {
+                _checkAnswer(option);
+                _resetTimer();
               },
-            ),
-          ),
+              child: Text(option)),
         );
       }).toList(),
     );

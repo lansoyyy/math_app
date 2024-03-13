@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:confetti/confetti.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
@@ -242,9 +241,14 @@ Which number correctly completes the questions?
             ),
 
             _buildQuestion(),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
             _buildOptions(),
-            const SizedBox(height: 20),
+            const SizedBox(height: 10),
+
+            Image.asset(
+              'assets/images/Animation - 1710372996566.gif',
+              width: 250,
+            ),
             // _buildNextButton(),
           ],
         ),
@@ -269,7 +273,7 @@ Which number correctly completes the questions?
 
   Widget _buildOptions() {
     return SizedBox(
-      height: 200,
+      height: 100,
       child: GridView.builder(
         itemCount: 4,
         gridDelegate:
@@ -288,20 +292,11 @@ Which number correctly completes the questions?
                 ),
                 backgroundColor: Colors.blue, // Customize the button color
               ),
-              child: AnimatedTextKit(
-                repeatForever: true,
-                animatedTexts: [
-                  WavyAnimatedText(_options[_currentQuestionIndex][index],
-                      textStyle: const TextStyle(
-                        fontFamily: 'Bold',
-                        fontSize: 18,
-                      )),
-                ],
-                isRepeatingAnimation: true,
-                onTap: () {
-                  _checkAnswer(_options[_currentQuestionIndex][index]);
-                },
-              ),
+              child: Text(_options[_currentQuestionIndex][index],
+                  style: const TextStyle(
+                    fontFamily: 'Bold',
+                    fontSize: 18,
+                  )),
             ),
           );
         },

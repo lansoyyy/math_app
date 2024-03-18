@@ -117,17 +117,6 @@ class _BookPageState extends State<BookPage> {
                                   document: pdfdoc,
                                   showPicker: false,
                                 )),
-                            Padding(
-                              padding: const EdgeInsets.only(bottom: 50),
-                              child: Align(
-                                alignment: Alignment.bottomCenter,
-                                child: Container(
-                                  width: double.infinity,
-                                  height: 150,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
                           ],
                         ),
                       )

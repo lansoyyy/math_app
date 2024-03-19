@@ -169,24 +169,29 @@ Which number correctly completes the questions?
     0,
     1,
     0,
-    1,
+    // 11
     1,
     2,
     1,
     0,
-    1,
-    1,
     0,
+    // 15
     1,
+    1,
+    1,
+    2,
     2,
     3,
     3,
     0,
     2,
     0,
+    // 26
     1,
     2,
     2,
+    3,
+    1,
     2
   ]; // Index of the correct answer for each question
 

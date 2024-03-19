@@ -134,7 +134,7 @@ box?
   void _resetTimer() {
     _timer.cancel();
     setState(() {
-      _secondsRemaining = 5;
+      _secondsRemaining = 20;
     });
     _startTimer();
   }
@@ -193,7 +193,7 @@ box?
   List<String?> _selectedOptions = List.filled(20, null);
 
   late Timer _timer;
-  int _secondsRemaining = 1000;
+  int _secondsRemaining = 20;
 
   Widget _buildQuizBody() {
     return Column(
@@ -231,8 +231,7 @@ box?
           padding: const EdgeInsets.symmetric(horizontal: 16.0),
           child: ElevatedButton(
               onPressed: () {
-                _checkAnswer(option);
-                _resetTimer();
+                _checkAnswer(option).whenComplete(() => _resetTimer());
               },
               child: Text(option)),
         );

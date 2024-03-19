@@ -6,6 +6,7 @@ import 'package:flutter/services.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:mathalino/screens/home_screen.dart';
+import 'package:mathalino/widgets/button_widget.dart';
 import 'package:mathalino/widgets/toast_widget.dart';
 import 'package:path_provider/path_provider.dart';
 
@@ -120,17 +121,21 @@ class _BookPageState extends State<BookPage> {
                           ],
                         ),
                       )
-                    : GestureDetector(
-                        onTap: () async {
-                          pdfdoc = await PDFDocument.fromAsset(
-                              'assets/images/bookfile.pdf');
+                    : Padding(
+                        padding: const EdgeInsets.only(top: 100),
+                        child: Center(
+                          child: ButtonWidget(
+                            color: Colors.amber,
+                            label: 'Start Reading',
+                            onPressed: () async {
+                              pdfdoc = await PDFDocument.fromAsset(
+                                  'assets/images/bookfile.pdf');
 
-                          setState(() {
-                            hasLoaded = true;
-                          });
-                        },
-                        child: Image.asset(
-                          'assets/images/book.png',
+                              setState(() {
+                                hasLoaded = true;
+                              });
+                            },
+                          ),
                         ),
                       ),
               ],

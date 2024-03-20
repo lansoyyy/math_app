@@ -68,12 +68,12 @@ What is the Least Common Denominator (LCD) of the following fraction.
 ''',
     '''
 What is the correct place value of the following underlined number.
-1 4 3 1
+_1̲ 4_3_1_
 
     ''',
     '''
 What is the correct place value of the following underlined number.
-4 3 1
+_4_3_1_
 
 ''',
     '''
@@ -130,12 +130,7 @@ Which number correctly completes the questions?
     ['55,016', '55,0016', '55,160', '55,00016'],
     ['107', '170', '10070', '1700'],
     ['2x2x2', '2x2x4', '2x2x3', '2x2x2x2'],
-    [
-      'Sixty-five',
-      'Sixty-Five Hundredths',
-      'Sixty-Five Tenths',
-      'Sixty-Five Thousandths'
-    ],
+    ['Sixty five', 'Fifty six', 'Sixty six', 'Sixty four'],
     ['100', '50', '110', '40'],
     ['200', '500', '100', '400'],
     [
@@ -172,7 +167,7 @@ Which number correctly completes the questions?
     // 11
     1,
     2,
-    1,
+    0,
     0,
     0,
     // 15

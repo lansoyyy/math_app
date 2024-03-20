@@ -224,18 +224,20 @@ box?
   }
 
   Widget _buildOptions() {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.stretch,
-      children: _options[_currentQuestionIndex].map((option) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-          child: ElevatedButton(
-              onPressed: () {
-                _checkAnswer(option).whenComplete(() => _resetTimer());
-              },
-              child: Text(option)),
-        );
-      }).toList(),
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.stretch,
+        children: _options[_currentQuestionIndex].map((option) {
+          return Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+            child: ElevatedButton(
+                onPressed: () {
+                  _checkAnswer(option).whenComplete(() => _resetTimer());
+                },
+                child: Text(option)),
+          );
+        }).toList(),
+      ),
     );
   }
 

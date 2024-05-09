@@ -68,12 +68,12 @@ What is the Least Common Denominator (LCD) of the following fraction.
 ''',
     '''
 What is the correct place value of the following underlined number.
-_1̲ 4_3_1_
+_1̲  4 3 1
 
     ''',
     '''
 What is the correct place value of the following underlined number.
-_4_3_1_
+_4_ 3 1
 
 ''',
     '''
@@ -111,10 +111,10 @@ Which number correctly completes the questions?
     ' Which number is a multiple of 4?',
     'Which sentence is true?',
     'choose the correct QUOTIENT of the given numbers. 25 divided by 5',
-    ' choose the correct DIFFERENCE of the given numbers.',
+    ' choose the correct DIFFERENCE of the given numbers. 30-6',
     'What is the sum of the following numbers, 50+50?',
-    'choose the correct QUOTIENT of the given numbers.',
-    'choose the correct DIFFERENCE of the given numbers.',
+    'choose the correct QUOTIENT of the given numbers. 5000 divided by 100',
+    'choose the correct DIFFERENCE of the given numbers. 1000-925',
     'Choose the correct name of the Polygon that has 3 equal sides and 3 angles.',
   ];
   final List<List<String>> _options = [
@@ -183,10 +183,10 @@ Which number correctly completes the questions?
     0,
     // 26
     1,
+    0,
     2,
     2,
-    3,
-    1,
+    2,
     2
   ]; // Index of the correct answer for each question
 

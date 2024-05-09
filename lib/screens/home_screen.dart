@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:mathalino/screens/pages/assessment_page.dart';
@@ -66,69 +67,162 @@ class _HomeScreenState extends State<HomeScreen> {
             Image.asset(
               'assets/images/ani.gif',
             ),
-            const SizedBox(
-              height: 25,
-            ),
-            TextWidget(
-              text: 'HOME',
-              fontSize: 48,
-              fontFamily: 'Bold',
-            ),
-            const SizedBox(
-              height: 25,
-            ),
-            ButtonWidget(
-              fontSize: 24,
-              color: Colors.blue,
-              label: 'BOOKS',
-              onPressed: () async {
-                await player.stop();
-                Get.to(() => const BookPage(),
-                    transition: Transition.circularReveal,
-                    duration: const Duration(seconds: 3));
-              },
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                GestureDetector(
+                  onTap: () async {
+                    await player.stop();
+                    Get.to(() => const BookPage(),
+                        transition: Transition.circularReveal,
+                        duration: const Duration(seconds: 3));
+                  },
+                  child: Container(
+                    width: 150,
+                    height: 150,
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.book,
+                          color: Colors.white,
+                          size: 100,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        TextWidget(
+                          text: 'Books',
+                          fontSize: 14,
+                          color: Colors.white,
+                          fontFamily: 'Bold',
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () async {
+                    await player.stop();
+                    Get.to(() => const DrillsPage(),
+                        transition: Transition.circularReveal,
+                        duration: const Duration(seconds: 3));
+                  },
+                  child: Container(
+                    width: 150,
+                    height: 150,
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.video_call,
+                          color: Colors.white,
+                          size: 100,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        TextWidget(
+                          text: 'Drills and Practices',
+                          fontSize: 12,
+                          color: Colors.white,
+                          fontFamily: 'Bold',
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
             const SizedBox(
               height: 20,
             ),
-            ButtonWidget(
-              fontSize: 24,
-              color: Colors.blue,
-              label: 'DRILLS AND PRACTICES',
-              onPressed: () async {
-                await player.stop();
-                Get.to(() => const DrillsPage(),
-                    transition: Transition.circularReveal,
-                    duration: const Duration(seconds: 3));
-              },
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            ButtonWidget(
-              fontSize: 24,
-              color: Colors.blue,
-              label: 'ASSESSMENT',
-              onPressed: () async {
-                await player.stop();
-                Get.to(() => const Assessmentpage(),
-                    transition: Transition.circularReveal,
-                    duration: const Duration(seconds: 3));
-              },
-            ),
-            const SizedBox(
-              height: 20,
-            ),
-            ButtonWidget(
-              fontSize: 24,
-              color: Colors.blue,
-              label: 'SETTINGS',
-              onPressed: () async {
-                await player.stop();
-                Get.to(() => const SettingsPage(),
-                    transition: Transition.circularReveal,
-                    duration: const Duration(seconds: 3));
-              },
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                GestureDetector(
+                  onTap: () async {
+                    await player.stop();
+                    Get.to(() => const Assessmentpage(),
+                        transition: Transition.circularReveal,
+                        duration: const Duration(seconds: 3));
+                  },
+                  child: Container(
+                    width: 150,
+                    height: 150,
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.assessment,
+                          color: Colors.white,
+                          size: 100,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        TextWidget(
+                          text: 'Assessments',
+                          fontSize: 14,
+                          color: Colors.white,
+                          fontFamily: 'Bold',
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () async {
+                    await player.stop();
+                    Get.to(() => const SettingsPage(),
+                        transition: Transition.circularReveal,
+                        duration: const Duration(seconds: 3));
+                  },
+                  child: Container(
+                    width: 150,
+                    height: 150,
+                    decoration: BoxDecoration(
+                      color: Colors.blue,
+                      borderRadius: BorderRadius.circular(15),
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.center,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Icon(
+                          Icons.settings,
+                          color: Colors.white,
+                          size: 100,
+                        ),
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        TextWidget(
+                          text: 'Settings',
+                          fontSize: 14,
+                          color: Colors.white,
+                          fontFamily: 'Bold',
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ],
             ),
           ],
         ),

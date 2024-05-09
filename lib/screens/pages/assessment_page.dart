@@ -24,6 +24,7 @@ class _AssessmentpageState extends State<Assessmentpage> {
   }
 
   playAudio() async {
+    await player.setLoopMode(LoopMode.all);
     await player.setAsset('assets/images/happy.mp3');
 
     await player.play();

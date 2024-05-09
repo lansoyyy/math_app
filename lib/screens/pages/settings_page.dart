@@ -7,7 +7,7 @@ import 'package:get/get.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:path_provider/path_provider.dart';
 
-import 'package:flutter_screen_wake/flutter_screen_wake.dart';
+import 'package:screen_brightness/screen_brightness.dart';
 import '../../widgets/text_widget.dart';
 import '../home_screen.dart';
 
@@ -147,7 +147,7 @@ class _DrillsPageState extends State<SettingsPage> {
 
   Future<void> setBrightness(double brightness) async {
     try {
-      await FlutterScreenWake.setBrightness(0.5);
+      await ScreenBrightness().setScreenBrightness(brightness);
     } catch (e) {
       print(e);
       throw 'Failed to set brightness';
